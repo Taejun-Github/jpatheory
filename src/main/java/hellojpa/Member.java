@@ -12,24 +12,18 @@ import java.util.Date;
 // @Table(name = "Member") 테이블과 이름 같으면 안써도 됨
 public class Member {
 
-    @Id
+    @Id @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name= "name")
-    private String name;
+    @Column(name= "USERNAME")
+    private String username;
 
-    private Integer age;
+//    @ManyToOne
+//    @JoinColumn(name = "TEAM_ID")
+//    private Team teamId;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
-
-    @Lob
-    private String description;
-
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
 }

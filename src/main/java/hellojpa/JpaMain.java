@@ -30,13 +30,17 @@ public class JpaMain {
 //            Member findMember = em.find(Member.class, 1L);
 //            findMember.setName("Test");
 
-            List<Member> result = em.createQuery("select m from Member as m", Member.class)
-                    .setFirstResult(1)
-                    .setMaxResults(10) // 페이징을 할 때 사용한다.
-                    .getResultList();
-            for(Member member : result) {
-                System.out.println(member.getName());
-            }
+            Team team = new Team();
+            team.setName("TeamA");
+            em.persist(team);
+
+//            Member member = new Member();
+//            member.setUsername("member1");
+//            member.setTeamId(member.getTeamId());
+//            em.persist(member);
+//
+//            Member member1 = em.find(Member.class, member.getId());
+
 
             tx.commit();
         } catch (Exception e) {
